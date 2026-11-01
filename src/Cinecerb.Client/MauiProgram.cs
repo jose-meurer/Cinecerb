@@ -4,7 +4,7 @@ namespace Cinecerb.Client;
 
 public static class MauiProgram
 {
-    public static MauiApp CreateMauiApp()
+    public static MauiApp CreateMauiApp(Action<MauiAppBuilder> configurePlatform)
     {
         var builder = MauiApp.CreateBuilder();
 
@@ -15,6 +15,8 @@ public static class MauiProgram
         builder.Services.AddBlazorWebViewDeveloperTools();
         builder.Logging.AddDebug();
 #endif
+
+        configurePlatform(builder);
 
         return builder.Build();
     }

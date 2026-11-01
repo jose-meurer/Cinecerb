@@ -4,8 +4,9 @@
     <Color x:Key="Primary">#00d2ff</Color>
     <Color x:Key="Secondary">#0072ff</Color>
     <Color x:Key="Background">#0a0a0d</Color>
+    <Color x:Key="SplashLineTrack">#1AFFFFFF</Color>
     <Color x:Key="Surface">#121216</Color>
-    <Color x:Key="TitleBarBackground">#0C0C10</Color>
+    <Color x:Key="TitleBarBackground">#00000000</Color>
     <Color x:Key="TextPrimary">#ffffff</Color>
     <Color x:Key="BootstrapBackground">#512BD4</Color>
     <Color x:Key="AssetForeground">#ffffff</Color>

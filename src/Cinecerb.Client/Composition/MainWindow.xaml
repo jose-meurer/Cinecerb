@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Window xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        xmlns:client="clr-namespace:Cinecerb.Client"
+        xmlns:client1="using:Cinecerb.Client"
+        x:Class="Cinecerb.Client.Composition.MainWindow"
+        Width="1280"
+        Height="720">
+    <client1:MainPage />
+</Window>

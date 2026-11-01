@@ -1,5 +1,3 @@
-using Microsoft.Maui.ApplicationModel;
-
 namespace Cinecerb.Client;
 
 public partial class App : Application
@@ -8,14 +6,4 @@ public partial class App : Application
     {
         InitializeComponent();
     }
-
-    protected override Window CreateWindow(IActivationState? activationState)
-    {
-        var window = new Window(new MainPage()) { Title = AppInfo.Current.Name };
-        ConfigurePlatformWindow(window);
-
-        return window;
-    }
-
-    partial void ConfigurePlatformWindow(Window window);
 }

@@ -18,6 +18,7 @@
 
 - A direção técnica definida é .NET MAUI com Blazor Hybrid: C#, componentes Razor (`.razor`), HTML e CSS, com JavaScript quando necessário para integração com APIs da WebView.
 - Organize o código por funcionalidades e casos de uso, seguindo Vertical Slice e a estrutura discutida com o usuário. Mantenha interface, estado e comportamento específicos próximos de sua funcionalidade.
+- Os namespaces devem corresponder ao caminho das pastas relativo ao projeto, com o prefixo `Cinecerb.Client`. Mantenha as referências C#, Razor e XAML alinhadas. Não distribua partes de uma mesma classe entre pastas que exigiriam namespaces diferentes; separe a integração de plataforma por contratos do framework ou contratos adequados à necessidade real.
 - O primeiro alvo de desenvolvimento e distribuição é Windows. Android será disponibilizado no futuro, a partir da mesma base de código.
 - Tudo que for específico de qualquer plataforma deve ficar dentro de `Platforms/`, na subpasta correspondente: por exemplo, `Platforms/Windows/` e, futuramente, `Platforms/Android/`. Isso inclui código, recursos, configurações, integrações nativas, customizações visuais e comportamentos exclusivos do sistema. Use a grafia padrão do MAUI: `Platforms`.
 - Preserve o código compartilhado independente de APIs e dependências específicas de sistema operacional. Isole o acesso às capacidades nativas por contratos adequados, com implementações na subpasta da respectiva plataforma.
@@ -43,6 +44,17 @@
 - A biblioteca de acesso ao SQLite e eventual ORM ainda não foram definidos. Não considere a escolha de SQLite como aprovação automática de um pacote ou ORM.
 - Mantenha as particularidades de armazenamento de cada plataforma dentro de `Platforms/`, conforme a regra geral de isolamento. O acesso compartilhado ao SQLite deve permanecer independente dessas particularidades.
 - Defina com o usuário quais dados serão persistidos ou armazenados em cache e suas regras de validade, expiração, invalidação, atualização e remoção. Não invente essas regras de negócio.
+
+## Abertura do aplicativo
+
+- A composição aprovada é a logo original com 200 px de largura e proporção preservada, com o nome do aplicativo abaixo em Outfit, peso 800, tamanho 60 px, `line-height: 0.75`, `letter-spacing: -0.5px` e `gap: 0` entre os elementos. O conjunto fica centralizado na área de conteúdo.
+- A animação atual é “Linha em movimento”: fundo escuro com o brilho radial azulado do antigo Mar de luz, logo e nome estáticos e uma linha ciano/azul abaixo, animada apenas com CSS. Não use ondas animadas, Vanta.js ou Three.js nesta etapa; não há interações com mouse, toque ou giroscópio.
+- Na splash, a região superior mostra apenas os botões nativos da janela sobre o fundo. A titlebar personalizada fica oculta para que o conteúdo se estenda até o topo, sem a marca no canto.
+- No Windows, oculte a titlebar no evento `HandlerChanged`, após a criação de seu controle nativo. Definir `IsVisible = false` antes de o handler existir não remove a margem superior na versão atual do MAUI.
+- A faixa superior da splash deve preservar o arraste, o duplo clique e o menu de sistema nativos do Windows, respeitando a área dos botões. Configure regiões nativas de legenda; não simule esses comportamentos em Razor ou JavaScript.
+- A janela MAUI inicia com `Width="1280"` e `Height="720"`, definidos em `Composition/MainWindow.xaml`. Não calcule automaticamente a proporção nem adapte o tamanho inicial ao monitor. O redimensionamento posterior pelo usuário permanece livre.
+- Em uma etapa futura, o JSON de configuração do usuário guardará a última resolução utilizada, que será restaurada nas aberturas seguintes. 1280 × 720 continuará sendo o padrão da primeira abertura. Não implemente essa persistência nesta etapa.
+- Nesta etapa, a abertura permanece visível como tela inicial para avaliação. A saída será definida com o usuário quando existir a próxima tela. Não introduza segundos fixos ou carregamento simulado; o comportamento final deve acompanhar o carregamento necessário.
 
 ## Qualidade e referências técnicas
 

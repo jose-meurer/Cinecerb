@@ -1,7 +1,6 @@
-using Microsoft.Maui.ApplicationModel;
 using AppTheme = Cinecerb.Client.Shared.DesignSystem.AppTheme;
 
-namespace Cinecerb.Client.WinUI;
+namespace Cinecerb.Client.Platforms.Windows;
 
 internal sealed class CinecerbTitleBar : TitleBar
 {
