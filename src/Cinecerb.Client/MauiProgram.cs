@@ -1,6 +1,6 @@
 using Microsoft.Extensions.Logging;
 
-namespace CineCerb.Client;
+namespace Cinecerb.Client;
 
 public static class MauiProgram
 {

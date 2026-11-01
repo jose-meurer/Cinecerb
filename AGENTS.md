@@ -1,4 +1,6 @@
-# Orientações para desenvolver o CineCerb
+# Orientações para desenvolver o Cinecerb
+
+- O nome oficial do projeto é `Cinecerb`. Use essa grafia em nomes técnicos, arquivos e textos da interface. A referência histórica arquivada e sua extração literal preservam a grafia original.
 
 ## Colaboração e ritmo de desenvolvimento
 
@@ -9,6 +11,8 @@
 - Apresente alternativas e suas consequências quando necessário, deixando a decisão de negócio com o usuário. Ausência de resposta não significa aprovação.
 - Não crie documentação, arquivos de documentação, projetos de teste ou arquivos de teste sem solicitação explícita do usuário. Preserve os documentos e testes existentes, quando houver, e não amplie esse escopo por iniciativa própria.
 - Mantenha as orientações de colaboração atualizadas neste `AGENTS.md`. A criação ou ampliação de outros documentos depende de solicitação explícita do usuário.
+- Ao executar o aplicativo para inspeção visual ou capturas de tela, use sempre a segunda tela. Não use a tela principal para essa verificação.
+- A tela de inspeção é a que fica à esquerda da principal. Preserve o foco do usuário durante as verificações: priorize compilação, análise estática e observação sem ativação. Não mova, ative ou interaja com janelas enquanto o usuário estiver trabalhando, sem combinar isso com ele.
 
 ## Direção técnica e plataformas
 
@@ -19,6 +23,19 @@
 - Preserve o código compartilhado independente de APIs e dependências específicas de sistema operacional. Isole o acesso às capacidades nativas por contratos adequados, com implementações na subpasta da respectiva plataforma.
 - Evite espalhar condicionais de plataforma, dependências nativas ou decisões exclusivas de um sistema pelos componentes Razor, funcionalidades e serviços compartilhados.
 - Prepare os limites necessários para a futura implementação Android, sem implementar suporte Android nem criar abstrações especulativas antes da etapa definida pelo usuário.
+
+## Valores globais e reutilizáveis
+
+- Defina nome, identificador, versão exibida e número de build nos metadados de `src/Cinecerb.Client/Cinecerb.Client.csproj`. Consuma essas informações em C# e Razor por `AppInfo.Current`, sem duplicar seus valores em constantes.
+- A versão exibida acordada é `0.1` (`ApplicationDisplayVersion`), com número técnico de build `1` (`ApplicationVersion`). Não confunda o estágio alfa/beta ou a versão exibida com o contador inteiro de build.
+- Centralize todas as cores configuráveis em `src/Cinecerb.Client/Shared/DesignSystem/AppColors.xaml`, inclusive cores utilizadas somente por um componente ou plataforma e as cores de fundo/tinta de ícones e splash. Não deixe literais de cor em componentes, telas, classes de plataforma, CSS ou propriedades de build.
+- `AppColors.xaml` é um ResourceDictionary MAUI carregado por `App.xaml`. `AppTheme.cs` acessa seus recursos tipados como `Color`, e `ThemeStyles.razor` os disponibiliza como variáveis CSS. Para CSS, converta com `ToRgbaHex(includeAlpha: true)`, preservando a posição correta do canal alfa.
+- Consuma `AppTheme` em C#/Razor e `var(--color-...)` no CSS. Antes de adicionar um literal global, procure e reutilize a definição correspondente; não mantenha uma paleta manual paralela no CSS. Use um alias para a classe `AppTheme` quando necessário para evitar conflito com o enum do MAUI.
+- Centralize pelo significado e alcance do valor, não apenas por sua igualdade numérica ou textual. Valores de responsabilidades diferentes não devem ser acoplados por coincidirem.
+- Valores exclusivos de uma funcionalidade ou componente permanecem próximos de seu uso, exceto cores, que sempre pertencem à paleta central. O código e o comportamento específicos de plataforma continuam em `Platforms/<Plataforma>/`, consumindo a paleta central quando necessário.
+- O `.csproj` lê as cores de ícones e splash do mesmo dicionário por `XmlPeek`, tarefa padrão do MSBuild. Os SVGs monocromáticos fornecem a geometria, e a tinta é aplicada pelo build. Não duplique essas cores nos SVGs ou no `.csproj`. Preserve as cores intrínsecas das imagens de marca PNG/ICO e o snapshot histórico.
+- Use recursos MAUI, `AppInfo` e a ponte Razor/CSS. Não reintroduza geradores próprios de C#/CSS ou arquivos `.props`/`.targets` para essa centralização sem uma nova decisão explícita do usuário.
+- Se houver dúvida sobre o significado, o valor ou o alcance de uma definição, converse com o usuário antes de estabelecê-la ou alterá-la. Centralizar um valor não autoriza decidir uma regra de negócio.
 
 ## Armazenamento local e cache
 
@@ -32,6 +49,7 @@
 - Siga boas práticas de desenvolvimento, Clean Code e SOLID, com nomes claros, responsabilidades coesas, dependências explícitas e baixo acoplamento.
 - Aplique esses princípios de forma proporcional à necessidade real. Evite camadas, interfaces, padrões ou dependências que apenas aumentem a complexidade sem benefício concreto.
 - Use as recomendações oficiais do Microsoft Learn como referência principal para C#, .NET, MAUI e Blazor: https://learn.microsoft.com/.
+- Nas explicações para estudo, priorize links para a documentação do Microsoft Learn. Diferencie o que está documentado do que foi confirmado somente na implementação do framework.
 - Consulte a documentação oficial aplicável à versão adotada antes de decisões técnicas que dependam do comportamento do framework. Não presuma APIs, suporte de plataforma ou configurações quando houver dúvida.
 - Quando uma recomendação técnica entrar em conflito com uma regra do projeto ou exigir uma decisão de negócio, explique o conflito e converse com o usuário antes de seguir na parte afetada.
 - Faça verificações proporcionais à alteração, como restauração de dependências e compilação. Crie testes somente quando o usuário solicitar explicitamente. Informe o que foi efetivamente validado e não declare testes ou compatibilidade de plataforma que não foram verificados.

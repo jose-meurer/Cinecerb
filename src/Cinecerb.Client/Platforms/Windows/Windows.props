@@ -5,4 +5,12 @@
         <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
         <WindowsPackageType>None</WindowsPackageType>
     </PropertyGroup>
+
+    <ItemGroup>
+        <MauiImage Include="Platforms\Windows\Assets\cinecerb_logo.png" />
+        <Content Include="Platforms\Windows\Assets\app.ico"
+                 Link="Assets\app.ico"
+                 CopyToOutputDirectory="PreserveNewest"
+                 CopyToPublishDirectory="PreserveNewest" />
+    </ItemGroup>
 </Project>

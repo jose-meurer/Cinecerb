@@ -1,4 +1,4 @@
-# Especificação visual do CineCerb
+# Especificação visual do Cinecerb
 
 Versão documental: 1.0 · Referência capturada em 31/10/2026 · Idioma da interface: português do Brasil.
 
@@ -33,7 +33,7 @@ Os links para linhas e os seletores se referem à [cópia arquivada de index.htm
 
 Aplicação de streaming para desktop Windows, com fundos quase pretos, navegação compacta, conteúdo cinematográfico e ações principais em gradiente ciano/azul. O login tem cenário de ficção científica, vinheta forte e cartão acrílico. O catálogo combina hero largo com fileiras horizontais. A reprodução ocupa a janela inteira, com controles sobre a imagem.
 
-O ícone da marca é o escudo com Cérbero, claquete e símbolo de reprodução ciano. O nome aparece como texto `CINECERB`, não como substituição por uma nova marca.
+O ícone da marca é o escudo com Cérbero, claquete e símbolo de reprodução ciano. O nome aparece como texto `Cinecerb`, não como substituição por uma nova marca.
 
 ## Mapa das superfícies existentes
 

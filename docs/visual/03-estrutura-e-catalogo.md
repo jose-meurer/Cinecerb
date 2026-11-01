@@ -25,7 +25,7 @@ A barra e a navegação ficam fora da região rolável do catálogo. Não tornar
 
 `.win-titlebar`: altura 42 px, padding horizontal 16 px, fundo `rgba(12,12,16,0.95)`, blur 20 px, borda inferior sutil, Flexbox com alinhamento central e `space-between`; z-index 500 e `flex-shrink: 0`.
 
-Marca à esquerda: ícone 28 × 28 px, `contain`, brilho ciano de 8 px alfa 0,85; gap 10 px para `CINECERB`; texto 13,5 px / 700 / tracking 0,5 px.
+Marca à esquerda: ícone 28 × 28 px, `contain`, brilho ciano de 8 px alfa 0,85; gap 10 px para `Cinecerb`; texto 13,5 px / 700 / tracking 0,5 px.
 
 Busca declarada com largura 420 px; começa oculta. Não há centragem absoluta: seu posicionamento decorre dos filhos da barra e de `space-between`. Campo 30 px de altura, raio 6 px, fundo branco alfa 0,06, borda sutil, padding esquerdo 34 px / direito 12 px, texto branco de 12,5 px. Ícone 15 × 15 px na esquerda a 10 px, centralizado verticalmente e cor dim.
 

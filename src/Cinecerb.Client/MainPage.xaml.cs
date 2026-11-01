@@ -1,4 +1,4 @@
-namespace CineCerb.Client;
+namespace Cinecerb.Client;
 
 public partial class MainPage : ContentPage
 {

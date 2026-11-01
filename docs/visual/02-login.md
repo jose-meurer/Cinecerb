@@ -10,7 +10,7 @@ Barra da janela — 42 px
    ├─ Cenário sci-fi, ampliado, com parallax
    ├─ Vinheta radial + gradiente vertical
    └─ Cartão acrílico centralizado — largura declarada 480 px
-      ├─ Marca: ícone + CINECERB
+      ├─ Marca: ícone + Cinecerb
       ├─ Subtítulo
       ├─ Abas Xtream / M3U
       ├─ Formulário ativo
@@ -71,7 +71,7 @@ Header vertical centralizado, gap 8 px. Marca em linha, gap 12 px. Ícone dentro
 
 Brilho do ícone: `drop-shadow(0 0 24px rgba(0,210,255,0.75))` mais sombra preta `0 8px 16px` alfa 0,6. No hover: escala 1,07, brilho 35 px alfa 0,95 e sombra `0 12px 24px` alfa 0,8. A duração está indefinida no código por tokens ausentes.
 
-Texto `CINECERB`: Outfit 32 px / 800 / tracking −0,5 px / branco. Subtítulo: `Conecte sua assinatura IPTV para carregar o catálogo`, 13 px e `--text-muted`.
+Texto `Cinecerb`: Outfit 32 px / 800 / tracking −0,5 px / branco. Subtítulo: `Conecte sua assinatura IPTV para carregar o catálogo`, 13 px e `--text-muted`.
 
 ## Abas de modo
 

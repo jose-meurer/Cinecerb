@@ -23,7 +23,7 @@ Os dois PNGs são idênticos em conteúdo, confirmado por SHA-256. O sufixo `?v=
 
 O asset inspecionado mostra um escudo de tons azul-escuros e ciano, Cérbero com três cabeças, uma claquete e um símbolo de play luminoso. Preservar o arquivo e sua proporção vertical. Nas caixas de 28 px e 92 px o CSS usa `object-fit: contain`, sem recorte ou deformação.
 
-O nome `CINECERB` é renderizado em texto ao lado do ícone: Inter na barra e Outfit no login. Não substituir pelo PNG `logo.png` supondo que ele contenha um lockup horizontal.
+O nome `Cinecerb` é renderizado em texto ao lado do ícone: Inter na barra e Outfit no login. Não substituir pelo PNG `logo.png` supondo que ele contenha um lockup horizontal.
 
 ## Cenário do login
 

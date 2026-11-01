@@ -97,4 +97,4 @@ Isso não equivale a um layout aprovado dessas páginas. Antes de fechar sua imp
 4. Atualizar as fichas relevantes, sem modificar o snapshot original.
 5. Comparar antes/depois nas mesmas condições e anexar as evidências disponíveis.
 
-O objetivo é permitir evolução consciente mantendo a identidade do CineCerb. A stack e a organização do código podem mudar; os valores e a composição visual só mudam mediante uma decisão explícita.
+O objetivo é permitir evolução consciente mantendo a identidade do Cinecerb. A stack e a organização do código podem mudar; os valores e a composição visual só mudam mediante uma decisão explícita.
