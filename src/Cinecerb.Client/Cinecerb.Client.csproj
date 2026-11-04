@@ -18,10 +18,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <MauiIcon Include="Resources\AppIcon\appicon.svg"
-                  ForegroundFile="Resources\AppIcon\appiconfg.svg" />
-        <MauiSplashScreen Include="Resources\Splash\splash.svg"
-                          BaseSize="128,128" />
+        <MauiIcon Include="Resources\AppIcon\appicon.png" />
+        <MauiSplashScreen Include="Resources\Splash\splash.png"
+                          BaseSize="128,171" />
     </ItemGroup>
 
     <ItemGroup>
@@ -44,8 +43,8 @@
         <Error Condition="'$(BootstrapBackgroundColor)' == '' or '$(AssetForegroundColor)' == ''"
                Text="Defina BootstrapBackground e AssetForeground em AppColors.xaml." />
         <ItemGroup>
-            <MauiIcon Update="@(MauiIcon)" Color="$(BootstrapBackgroundColor)" TintColor="$(AssetForegroundColor)" />
-            <MauiSplashScreen Update="@(MauiSplashScreen)" Color="$(BootstrapBackgroundColor)" TintColor="$(AssetForegroundColor)" />
+            <MauiIcon Update="@(MauiIcon)" Color="$(BootstrapBackgroundColor)" />
+            <MauiSplashScreen Update="@(MauiSplashScreen)" Color="$(BootstrapBackgroundColor)" />
         </ItemGroup>
     </Target>
 
