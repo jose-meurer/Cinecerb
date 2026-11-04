@@ -49,6 +49,8 @@
 
 - A composição aprovada é a logo original com 200 px de largura e proporção preservada, com o nome do aplicativo abaixo em Outfit, peso 800, tamanho 60 px, `line-height: 0.75`, `letter-spacing: -0.5px` e `gap: 0` entre os elementos. O conjunto fica centralizado na área de conteúdo.
 - A animação atual é “Linha em movimento”: fundo escuro com o brilho radial azulado do antigo Mar de luz, logo e nome estáticos e uma linha ciano/azul abaixo, animada apenas com CSS. Não use ondas animadas, Vanta.js ou Three.js nesta etapa; não há interações com mouse, toque ou giroscópio.
+- Durante a inicialização, a página e a WebView devem usar a mesma cor de fundo base da splash, consumindo `Background` da paleta central, inclusive antes da renderização do Blazor, para evitar a piscada branca.
+- Exiba apenas o fundo enquanto a splash se prepara. Revele a logo, o nome e a linha juntos após a decodificação da logo, o carregamento da fonte e a preparação do layout, sem espera fixa. Inicie a animação da linha somente nessa revelação.
 - Na splash, a região superior mostra apenas os botões nativos da janela sobre o fundo. A titlebar personalizada fica oculta para que o conteúdo se estenda até o topo, sem a marca no canto.
 - No Windows, oculte a titlebar no evento `HandlerChanged`, após a criação de seu controle nativo. Definir `IsVisible = false` antes de o handler existir não remove a margem superior na versão atual do MAUI.
 - A faixa superior da splash deve preservar o arraste, o duplo clique e o menu de sistema nativos do Windows, respeitando a área dos botões. Configure regiões nativas de legenda; não simule esses comportamentos em Razor ou JavaScript.
