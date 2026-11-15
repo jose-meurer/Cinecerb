@@ -1,5 +1,5 @@
 using Microsoft.Extensions.Logging;
-
+using Cinecerb.Client.Composition;
 namespace Cinecerb.Client;
 
 public static class MauiProgram
@@ -10,6 +10,7 @@ public static class MauiProgram
 
         builder.UseMauiApp<App>();
         builder.Services.AddMauiBlazorWebView();
+        builder.Services.AddCinecerbServices();
 
 #if DEBUG
         builder.Services.AddBlazorWebViewDeveloperTools();
