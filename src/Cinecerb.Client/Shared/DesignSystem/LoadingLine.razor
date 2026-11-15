@@ -1,0 +1,9 @@
+@namespace Cinecerb.Client.Shared.DesignSystem
+
+<span class="loading-line progress @(Active ? "loading-line--active" : null)" aria-hidden="true">
+    <span class="loading-line__segment progress-bar w-50"></span>
+</span>
+
+@code {
+    [Parameter] public bool Active { get; set; } = true;
+}

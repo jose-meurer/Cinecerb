@@ -11,10 +11,13 @@
         <EnableDefaultCssItems>false</EnableDefaultCssItems>
         <Nullable>enable</Nullable>
         <ApplicationTitle>Cinecerb</ApplicationTitle>
-        <ApplicationId>com.companyname.cinecerb.client</ApplicationId>
-        <ApplicationDisplayVersion>0.1</ApplicationDisplayVersion>
+        <AssemblyName>$(ApplicationTitle)</AssemblyName>
+        <ApplicationId>com.cerb.cinecerb</ApplicationId>
+        <ApplicationDisplayVersion>1</ApplicationDisplayVersion>
         <ApplicationVersion>1</ApplicationVersion>
         <Product>$(ApplicationTitle)</Product>
+        <Company>Cerb</Company>
+        <Authors>Jose Meurer</Authors>
     </PropertyGroup>
 
     <ItemGroup>
@@ -26,25 +29,34 @@
     <ItemGroup>
         <PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
         <PackageReference Include="Microsoft.AspNetCore.Components.WebView.Maui" Version="$(MauiVersion)" />
-        <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.12" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.0.12" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.12">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
     </ItemGroup>
 
     <Target Name="LoadBuildColors" BeforeTargets="ResizetizeCollectItems;GetMauiItems">
-        <XmlPeek XmlInputPath="Shared\DesignSystem\AppColors.xaml"
-                 Namespaces="&lt;Namespace Prefix='m' Uri='http://schemas.microsoft.com/dotnet/2021/maui' /&gt;&lt;Namespace Prefix='x' Uri='http://schemas.microsoft.com/winfx/2009/xaml' /&gt;"
-                 Query="/m:ResourceDictionary/m:Color[@x:Key='BootstrapBackground']/text()">
-            <Output TaskParameter="Result" PropertyName="BootstrapBackgroundColor" />
+        <PropertyGroup>
+            <_AppColorsPath>Shared\DesignSystem\AppColors.xaml</_AppColorsPath>
+            <_AppColorsNamespaces>&lt;Namespace Prefix='m' Uri='http://schemas.microsoft.com/dotnet/2021/maui' /&gt;&lt;Namespace Prefix='x' Uri='http://schemas.microsoft.com/winfx/2009/xaml' /&gt;</_AppColorsNamespaces>
+        </PropertyGroup>
+        <XmlPeek XmlInputPath="$(_AppColorsPath)"
+                 Namespaces="$(_AppColorsNamespaces)"
+                 Query="/m:ResourceDictionary/m:Color[@x:Key='AppIconBackgroundColor']/text()">
+            <Output TaskParameter="Result" PropertyName="AppIconBackgroundColor" />
         </XmlPeek>
-        <XmlPeek XmlInputPath="Shared\DesignSystem\AppColors.xaml"
-                 Namespaces="&lt;Namespace Prefix='m' Uri='http://schemas.microsoft.com/dotnet/2021/maui' /&gt;&lt;Namespace Prefix='x' Uri='http://schemas.microsoft.com/winfx/2009/xaml' /&gt;"
-                 Query="/m:ResourceDictionary/m:Color[@x:Key='AssetForeground']/text()">
-            <Output TaskParameter="Result" PropertyName="AssetForegroundColor" />
+        <XmlPeek XmlInputPath="$(_AppColorsPath)"
+                 Namespaces="$(_AppColorsNamespaces)"
+                 Query="/m:ResourceDictionary/m:Color[@x:Key='BackgroundColor']/text()">
+            <Output TaskParameter="Result" PropertyName="AppBackgroundColor" />
         </XmlPeek>
-        <Error Condition="'$(BootstrapBackgroundColor)' == '' or '$(AssetForegroundColor)' == ''"
-               Text="Defina BootstrapBackground e AssetForeground em AppColors.xaml." />
+        <Error Condition="'$(AppBackgroundColor)' == '' or '$(AppIconBackgroundColor)' == ''"
+               Text="Defina BackgroundColor e AppIconBackgroundColor em AppColors.xaml." />
         <ItemGroup>
-            <MauiIcon Update="@(MauiIcon)" Color="$(BootstrapBackgroundColor)" />
-            <MauiSplashScreen Update="@(MauiSplashScreen)" Color="$(BootstrapBackgroundColor)" />
+            <MauiIcon Update="@(MauiIcon)" Color="$(AppIconBackgroundColor)" />
+            <MauiSplashScreen Update="@(MauiSplashScreen)" Color="$(AppBackgroundColor)" />
         </ItemGroup>
     </Target>
 

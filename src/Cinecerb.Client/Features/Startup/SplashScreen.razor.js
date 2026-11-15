@@ -8,6 +8,6 @@ export async function waitUntilReady(splash) {
         document.fonts.load(titleFont, title.textContent)
     ]);
     await document.fonts.ready;
-    
+
     await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
 }

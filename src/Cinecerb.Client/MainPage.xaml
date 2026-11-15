@@ -4,8 +4,8 @@
              xmlns:composition="clr-namespace:Cinecerb.Client.Composition"
              xmlns:blazor="clr-namespace:Microsoft.AspNetCore.Components.Web;assembly=Microsoft.AspNetCore.Components.Web"
              x:Class="Cinecerb.Client.MainPage"
-             BackgroundColor="{StaticResource Background}">
-    <BlazorWebView HostPage="wwwroot/index.html" BackgroundColor="{StaticResource Background}">
+             BackgroundColor="{StaticResource BackgroundColor}">
+    <BlazorWebView HostPage="wwwroot/index.html" BackgroundColor="{StaticResource BackgroundColor}">
         <BlazorWebView.RootComponents>
             <RootComponent Selector="head::after" ComponentType="{x:Type blazor:HeadOutlet}" />
             <RootComponent Selector="#app" ComponentType="{x:Type composition:Routes}" />

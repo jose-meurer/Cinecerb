@@ -1,0 +1,17 @@
+.loading-line {
+    --bs-progress-height: 3px;
+}
+
+.loading-line__segment {
+    border-radius: inherit;
+    background: linear-gradient(90deg, var(--color-secondary), var(--color-primary));
+}
+
+.loading-line--active .loading-line__segment {
+    animation: loading-line-motion 1.5s ease-in-out infinite;
+}
+
+@keyframes loading-line-motion {
+    from { transform: translateX(-110%); }
+    to { transform: translateX(330%); }
+}

@@ -5,16 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title></title>
     <base href="/" />
-    <link rel="preload" href="fonts/outfit-extrabold.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="preload" href="fonts/outfit-variable.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="lib/bootstrap-icons/font/bootstrap-icons.min.css" />
     <link rel="stylesheet" href="css/app.css" />
-    <link rel="stylesheet" href="Cinecerb.Client.styles.css" />
+    <link rel="stylesheet" href="Cinecerb.styles.css" />
     <link rel="icon" href="data:," />
 </head>
 <body>
-    <div id="app"></div>
+    <div id="app" class="h-100"></div>
 
-    <div id="blazor-error-ui" data-nosnippet role="alert">
-        Ocorreu um erro inesperado.
+    <div id="blazor-error-ui" class="position-fixed bottom-0 start-0 end-0 p-3" data-nosnippet role="alert">
+        Ops, tropecei em alguma coisa por aqui.
         <a href="." class="reload">Recarregar</a>
         <button type="button" class="dismiss">Fechar</button>
     </div>

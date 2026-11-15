@@ -1,13 +1,56 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
-    <Color x:Key="Primary">#00d2ff</Color>
-    <Color x:Key="Secondary">#0072ff</Color>
-    <Color x:Key="Background">#0a0a0d</Color>
-    <Color x:Key="SplashLineTrack">#1AFFFFFF</Color>
-    <Color x:Key="Surface">#121216</Color>
-    <Color x:Key="TitleBarBackground">#00000000</Color>
-    <Color x:Key="TextPrimary">#ffffff</Color>
-    <Color x:Key="BootstrapBackground">#512BD4</Color>
-    <Color x:Key="AssetForeground">#ffffff</Color>
+    <!-- Marca -->
+    <Color x:Key="PrimaryColor">#00d2ff</Color>
+    <Color x:Key="PrimaryHoverColor">#38bdf8</Color>
+    <Color x:Key="PrimaryTintColor">#1F00D2FF</Color>
+    <Color x:Key="SecondaryColor">#0072ff</Color>
+    <Color x:Key="SecondaryHoverColor">#0088ff</Color>
+
+    <!-- Brilho da marca (escala do mais suave ao mais intenso) -->
+    <Color x:Key="GlowSoftColor">#4000D2FF</Color>
+    <Color x:Key="GlowColor">#7300D2FF</Color>
+    <Color x:Key="GlowStrongColor">#A600D2FF</Color>
+    <Color x:Key="GlowIntenseColor">#BF00D2FF</Color>
+
+    <!-- Superfícies -->
+    <Color x:Key="BackgroundColor">#0a0a0d</Color>
+    <Color x:Key="SurfaceColor">#121216</Color>
+    <Color x:Key="SurfaceRaisedColor">#80101016</Color>
+    <Color x:Key="SurfaceOverlayColor">#F2101016</Color>
+    <Color x:Key="SurfaceInputColor">#B30A0E16</Color>
+    <Color x:Key="SurfaceInputHoverColor">#D10A0E16</Color>
+    <Color x:Key="SurfaceInputFocusColor">#F2070A10</Color>
+    <Color x:Key="TitleBarBackgroundColor">#00000000</Color>
+
+    <!-- Bordas e foco -->
+    <Color x:Key="BorderColor">#2EFFFFFF</Color>
+    <Color x:Key="BorderPrimaryColor">#2900D2FF</Color>
+    <Color x:Key="BorderPrimaryStrongColor">#6100D2FF</Color>
+    <Color x:Key="FocusRingColor">#5900D2FF</Color>
+
+    <!-- Realces e sombras -->
+    <Color x:Key="HighlightColor">#52FFFFFF</Color>
+    <Color x:Key="HighlightSubtleColor">#2EFFFFFF</Color>
+    <Color x:Key="ShadowColor">#9A000000</Color>
+    <Color x:Key="ShadowSubtleColor">#99000000</Color>
+    <Color x:Key="ShadowStrongColor">#B3000000</Color>
+    <Color x:Key="ShadowInsetColor">#80000000</Color>
+    <Color x:Key="AmbientShadowColor">#380994E5</Color>
+    <Color x:Key="TextShadowColor">#BF000000</Color>
+
+    <!-- Texto e ícones -->
+    <Color x:Key="TextPrimaryColor">#ffffff</Color>
+    <Color x:Key="TextSecondaryColor">#9e9ea7</Color>
+    <Color x:Key="TextPlaceholderColor">#61FFFFFF</Color>
+    <Color x:Key="IconColor">#7d9cb8</Color>
+
+    <!-- Trilhos de progresso e alternância -->
+    <Color x:Key="TrackSubtleColor">#1AFFFFFF</Color>
+    <Color x:Key="TrackColor">#33FFFFFF</Color>
+
+    <!-- Ativos da aplicação (lidos pelo build para ícone e splash) -->
+    <Color x:Key="AppIconBackgroundColor">#00000000</Color>
+    <Color x:Key="AssetForegroundColor">#ffffff</Color>
 </ResourceDictionary>

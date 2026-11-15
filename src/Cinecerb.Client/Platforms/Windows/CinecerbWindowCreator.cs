@@ -1,4 +1,5 @@
 using Cinecerb.Client.Composition;
+using AppTheme = Cinecerb.Client.Shared.DesignSystem.AppTheme;
 
 namespace Cinecerb.Client.Platforms.Windows;
 
@@ -7,30 +8,27 @@ internal sealed class CinecerbWindowCreator : IWindowCreator
     public Window CreateWindow(Application app, IActivationState? activationState)
     {
         var window = new MainWindow { Title = AppInfo.Current.Name };
-        var titleBar = new CinecerbTitleBar();
-        titleBar.HandlerChanged += HideSplashTitleBar;
+
+        var titleBar = new TitleBar
+        {
+            HeightRequest = 40,
+            BackgroundColor = AppTheme.TitleBarBackgroundColor,
+            ForegroundColor = AppTheme.TextPrimaryColor
+        };
+
         window.TitleBar = titleBar;
-        window.Created += ConfigureNativeWindow;
+        titleBar.HandlerChanged += HideTitleBar;
 
         return window;
     }
 
-    private static void HideSplashTitleBar(object? sender, EventArgs args)
+    private static void HideTitleBar(object? sender, EventArgs args)
     {
-        if (sender is not CinecerbTitleBar titleBar || titleBar.Handler is null)
+        if (sender is not TitleBar titleBar || titleBar.Handler is null)
             return;
 
-        titleBar.HandlerChanged -= HideSplashTitleBar;
-        // O MAUI só remove a margem superior quando o handler nativo já existe.
+        titleBar.HandlerChanged -= HideTitleBar;
         titleBar.PassthroughElements.Clear();
         titleBar.IsVisible = false;
-    }
-
-    private static void ConfigureNativeWindow(object? sender, EventArgs args)
-    {
-        if (sender is not Window window || window.Handler?.PlatformView is not Microsoft.Maui.MauiWinUIWindow nativeWindow)
-            return;
-
-        CinecerbWindow.Configure(nativeWindow);
     }
 }

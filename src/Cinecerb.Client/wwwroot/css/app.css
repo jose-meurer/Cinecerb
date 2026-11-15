@@ -1,20 +1,149 @@
+@font-face {
+    font-family: "Outfit";
+    src: url("../fonts/outfit-variable.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+}
+
+:root,
+[data-bs-theme=light] {
+    --bs-primary: var(--color-primary);
+    --bs-secondary: var(--color-secondary);
+    --bs-body-color: var(--color-text-primary);
+    --bs-body-bg: var(--color-background);
+    --bs-emphasis-color: var(--color-text-primary);
+    --bs-heading-color: var(--color-text-primary);
+    --bs-secondary-color: var(--color-text-secondary);
+    --bs-secondary-bg: var(--color-surface);
+    --bs-tertiary-color: var(--color-text-placeholder);
+    --bs-tertiary-bg: var(--color-surface-raised);
+    --bs-link-color: var(--color-primary);
+    --bs-link-hover-color: var(--color-primary-hover);
+    --bs-border-color: var(--color-border);
+    --bs-border-color-translucent: var(--color-border);
+    --bs-focus-ring-color: var(--color-focus-ring);
+    --bs-body-font-family: "Outfit", sans-serif;
+}
+
+.form-control {
+    border-color: var(--color-border-primary);
+    background-color: var(--color-surface-input);
+    backdrop-filter: blur(14px);
+    box-shadow: inset 0 2px 6px var(--color-shadow-subtle);
+}
+
+.form-control::placeholder {
+    color: var(--color-text-placeholder);
+}
+
+.form-control:hover {
+    border-color: var(--color-border-primary-strong);
+    background-color: var(--color-surface-input-hover);
+}
+
+.form-control:focus {
+    border-color: var(--color-primary);
+    background-color: var(--color-surface-input-focus);
+    box-shadow: inset 0 2px 6px var(--color-shadow-strong),
+        0 0 0 0.25rem var(--color-focus-ring), 0 0 20px var(--color-glow-soft);
+}
+
+.btn {
+    --bs-btn-focus-box-shadow: 0 0 0 0.25rem var(--color-focus-ring);
+}
+
+.btn-primary {
+    --bs-btn-color: var(--color-text-primary);
+    --bs-btn-bg: var(--color-primary);
+    --bs-btn-border-color: transparent;
+    --bs-btn-hover-color: var(--color-text-primary);
+    --bs-btn-hover-bg: var(--color-primary-hover);
+    --bs-btn-hover-border-color: transparent;
+    --bs-btn-active-color: var(--color-text-primary);
+    --bs-btn-active-bg: var(--color-primary);
+    --bs-btn-active-border-color: transparent;
+    --bs-btn-disabled-color: var(--color-text-primary);
+    --bs-btn-disabled-bg: var(--color-primary);
+    --bs-btn-disabled-border-color: transparent;
+}
+
+.form-check-input {
+    border-color: transparent;
+    background-color: var(--color-track);
+}
+
+.form-check-input:checked {
+    border-color: var(--color-primary);
+    background-color: var(--color-primary);
+}
+
+.form-check-input:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 0.25rem var(--color-focus-ring);
+}
+
+.form-switch .form-check-input,
+.form-switch .form-check-input:focus,
+.form-switch .form-check-input:checked {
+    --bs-form-switch-bg: radial-gradient(circle closest-side, var(--color-text-primary) 76%, transparent 80%);
+    background-size: 50% 100%;
+}
+
+.toast {
+    --bs-toast-color: var(--color-text-primary);
+    --bs-toast-bg: var(--color-surface-overlay);
+    --bs-toast-border-color: var(--color-border-primary-strong);
+    --bs-toast-box-shadow: 0 12px 32px var(--color-shadow), inset 0 1px 1px var(--color-highlight-subtle);
+    --bs-toast-header-color: var(--color-primary);
+    --bs-toast-header-bg: transparent;
+    --bs-toast-header-border-color: transparent;
+}
+
+.progress {
+    --bs-progress-bg: var(--color-track-subtle);
+}
+
 html,
 body {
     height: 100%;
-    margin: 0;
-    background-color: var(--color-background);
-    color: var(--color-text-primary);
+    -webkit-user-select: none;
+    user-select: none;
 }
 
-#app {
-    height: 100%;
+input,
+textarea,
+[contenteditable="true"] {
+    -webkit-user-select: text;
+    user-select: text;
+}
+
+.app-surface {
+    isolation: isolate;
+}
+
+.app-surface::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image: radial-gradient(
+        circle 60vw at 50% 49%,
+        color-mix(in srgb, var(--color-secondary) 16%, var(--color-background)),
+        var(--color-background)
+    );
+    animation: app-surface-glow 280ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes app-surface-glow {
+    from {
+        opacity: 0;
+    }
 }
 
 #blazor-error-ui {
     display: none;
-    position: fixed;
-    inset: auto 0 0;
-    padding: 12px;
     background-color: var(--color-surface);
 }
 

@@ -1,21 +1,26 @@
-@page "/"
 @using Microsoft.JSInterop
 @inject IJSRuntime JSRuntime
 
-<main @ref="_splash" class="splash-screen @(_isReady ? "splash-screen--ready" : null)" aria-labelledby="splash-title" aria-busy="@(!_isReady)">
-    <div class="splash-screen__identity">
-        <img class="splash-screen__logo"
+@namespace Cinecerb.Client.Features.Startup
+
+<section @ref="_splash" class="splash-screen position-relative d-flex align-items-center justify-content-center h-100 overflow-hidden @(_isReady ? "splash-screen--ready" : null)" aria-labelledby="splash-title" aria-busy="true">
+    <div class="splash-screen__identity position-relative d-flex flex-column align-items-center">
+        <img class="splash-screen__logo d-block object-fit-contain user-select-none"
              src="images/cinecerb-logo.png"
              alt="Logo do aplicativo"
              draggable="false" />
-        <h1 id="splash-title" class="splash-screen__name">@AppInfo.Current.Name</h1>
-        <div class="splash-screen__line" aria-hidden="true">
-            <span class="splash-screen__line-segment"></span>
+        <h1 id="splash-title" class="splash-screen__name m-0 display-3 user-select-none">@AppInfo.Current.Name</h1>
+        <div class="splash-screen__line position-absolute start-50 translate-middle-x" aria-hidden="true">
+            <LoadingLine Active="_isReady" />
         </div>
+        <p class="splash-screen__status position-absolute m-0 text-center small text-body-secondary" role="status">@StatusMessage</p>
     </div>
-</main>
+</section>
 
 @code {
+    [Parameter] public string? StatusMessage { get; set; }
+    [Parameter] public EventCallback Ready { get; set; }
+
     private ElementReference _splash;
     private bool _isReady;
 
@@ -23,12 +28,13 @@
     {
         if (!firstRender)
             return;
-        
+
         await using var module = await JSRuntime.InvokeAsync<IJSObjectReference>(
             "import", "./Features/Startup/SplashScreen.razor.js");
-            await module.InvokeVoidAsync("waitUntilReady", _splash);
-    
-            _isReady = true;
-            StateHasChanged();
+        await module.InvokeVoidAsync("waitUntilReady", _splash);
+
+        _isReady = true;
+        StateHasChanged();
+        await Ready.InvokeAsync();
     }
 }
